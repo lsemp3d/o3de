@@ -313,6 +313,9 @@ set(FILES
     AssetEditor/AssetEditorWindow.cpp
     AssetEditor/AssetEditorWindow.h
     AssetEditor/AssetEditorWindow.ui
+    CreateClassesTool/CreateClassToolWindow.h
+    CreateClassesTool/CreateClassToolWindow.cpp
+    CreateClassesTool/CreateClassToolWindow.ui
     Commands/CommandManager.cpp
     Commands/CommandManager.h
     Controls/ConsoleSCB.cpp

@@ -49,6 +49,8 @@ namespace LyViewPane
 
     static const char* const SliceRelationships = "Slice Relationship View (PREVIEW)";
 
+    static const char* const CreateClassesTool = "Create C++ Classes (PREVIEW)";
+
     const int NO_BUILTIN_ACTION = -1;
 }
 

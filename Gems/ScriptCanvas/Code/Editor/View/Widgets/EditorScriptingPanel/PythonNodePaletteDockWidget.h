@@ -31,6 +31,8 @@
 #include <ScriptCanvas/Bus/EditorScriptCanvasBus.h>
 #include <ScriptCanvas/Components/EditorUtils.h>
 #include <ScriptCanvas/Core/Core.h>
+
+#include <Editor/View/Widgets/EditorScriptingPanel/PythonNodePaletteModel.h>
 #endif
 
 class QToolButton;
@@ -44,15 +46,23 @@ namespace Ui
 namespace ScriptCanvasEditor
 {
     class ScriptEventsPaletteTreeItem;
-    class NodePaletteModel;
 
     namespace Widget
     {
-        struct NodePaletteWidget
+        struct PythonNodePaletteWidget
         {
-            static GraphCanvas::NodePaletteTreeItem* ExternalCreateNodePaletteRoot(const NodePaletteModel& nodePaletteModel, AzToolsFramework::AssetBrowser::AssetBrowserFilterModel* assetModel);
+            static GraphCanvas::NodePaletteTreeItem* ExternalCreateNodePaletteRoot(const PythonNodePaletteModel& nodePaletteModel, AzToolsFramework::AssetBrowser::AssetBrowserFilterModel* assetModel);
         };
 
+        class PythonScriptCanvasRootPaletteTreeItem : public ScriptCanvasRootPaletteTreeItem
+        {
+        public:
+            PythonScriptCanvasRootPaletteTreeItem(const PythonNodePaletteModel& nodePaletteModel, AzToolsFramework::AssetBrowser::AssetBrowserFilterModel* assetModel);
+
+            const PythonNodePaletteModel& m_nodePaletteModel;
+        };
+
+#if 0
         class ScriptCanvasRootPaletteTreeItem
             : public GraphCanvas::NodePaletteTreeItem
             , AzFramework::AssetCatalogEventBus::Handler
@@ -113,8 +123,6 @@ namespace ScriptCanvasEditor
 
             void RequestBuildChildrenFromSubgraphInterface(NodePaletteTreeItem* item, AZ::Data::Asset<AZ::Data::AssetData> asset);
 
-        protected:
-
             const NodePaletteModel& m_nodePaletteModel;
             AzToolsFramework::AssetBrowser::AssetBrowserFilterModel* m_assetModel;
 
@@ -160,29 +168,30 @@ namespace ScriptCanvasEditor
             AZStd::unique_ptr< Ui::ScriptCanvasNodePaletteToolbar > m_ui;
         };
 
-        class ScriptCanvasNodePaletteConfig
+#endif
+        class PythonScriptCanvasNodePaletteConfig
             : public GraphCanvas::NodePaletteConfig
         {
         public:
-            ScriptCanvasNodePaletteConfig(const NodePaletteModel& nodePaletteModel, AzToolsFramework::AssetBrowser::AssetBrowserFilterModel* assetModel, bool isInContextMenu);
-            ~ScriptCanvasNodePaletteConfig();
+            PythonScriptCanvasNodePaletteConfig(const PythonNodePaletteModel& nodePaletteModel, AzToolsFramework::AssetBrowser::AssetBrowserFilterModel* assetModel, bool isInContextMenu);
+            ~PythonScriptCanvasNodePaletteConfig();
 
-            const NodePaletteModel& m_nodePaletteModel;
+            const PythonNodePaletteModel& m_nodePaletteModel;
             AzToolsFramework::AssetBrowser::AssetBrowserFilterModel* m_assetModel;
         };
 
-        class NodePaletteDockWidget
+        class PythonNodePaletteDockWidget
             : public GraphCanvas::NodePaletteDockWidget
             , public GraphCanvas::AssetEditorNotificationBus::Handler
             , public GraphCanvas::SceneNotificationBus::Handler
         {
         public:
-            AZ_CLASS_ALLOCATOR(NodePaletteDockWidget, AZ::SystemAllocator, 0);
+            AZ_CLASS_ALLOCATOR(PythonNodePaletteDockWidget, AZ::SystemAllocator, 0);
 
             static const char* GetMimeType() { return "scriptcanvas/node-palette-mime-event"; }
 
-            NodePaletteDockWidget(const QString& windowLabel, QWidget* parent, const ScriptCanvasNodePaletteConfig& paletteConfig);
-            ~NodePaletteDockWidget();
+            PythonNodePaletteDockWidget(const QString& windowLabel, QWidget* parent, const PythonScriptCanvasNodePaletteConfig& paletteConfig);
+            ~PythonNodePaletteDockWidget();
 
             void OnNewCustomEvent();
             void OnNewFunctionEvent();
@@ -217,7 +226,7 @@ namespace ScriptCanvasEditor
             void ParseCycleTargets(GraphCanvas::GraphCanvasTreeItem* treeItem);
 
             AzToolsFramework::AssetBrowser::AssetBrowserFilterModel* m_assetModel;
-            const NodePaletteModel& m_nodePaletteModel;
+            const PythonNodePaletteModel& m_nodePaletteModel;
 
             QToolButton* m_newCustomEvent;
 

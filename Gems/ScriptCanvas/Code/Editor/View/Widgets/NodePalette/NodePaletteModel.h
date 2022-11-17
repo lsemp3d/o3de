@@ -85,7 +85,7 @@ namespace ScriptCanvasEditor
 
         void AssignAssetModel(AzToolsFramework::AssetBrowser::AssetBrowserFilterModel* assetModel);
 
-        void RepopulateModel();
+        virtual void RepopulateModel();
 
         void RegisterDataDrivenNode(DataDrivenNodeModelInformation* nodePaletteItemInformation);
 
@@ -126,7 +126,7 @@ namespace ScriptCanvasEditor
         void TraverseTree(QModelIndex index = QModelIndex());
         ////
 
-    private:
+    protected:
 
         AZStd::vector<ScriptCanvas::NodeTypeIdentifier> ProcessAsset(AzToolsFramework::AssetBrowser::AssetBrowserEntry* entry);
         void RemoveAsset(const AZ::Data::AssetId& assetId);

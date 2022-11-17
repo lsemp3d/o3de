@@ -39,6 +39,7 @@
 #include <Editor/View/Dialogs/UnsavedChangesDialog.h>
 #include <Editor/View/Dialogs/SettingsDialog.h>
 #include <Editor/View/Widgets/ScriptCanvasNodePaletteDockWidget.h>
+#include <Editor/View/Widgets/EditorScriptingPanel/PythonNodePaletteDockWidget.h>
 #include <Editor/View/Widgets/PropertyGrid.h>
 #include <Editor/View/Widgets/CommandLine.h>
 #include <Editor/View/Widgets/GraphTabBar.h>
@@ -557,6 +558,7 @@ namespace ScriptCanvasEditor
         QObject::connect(m_statusWidget, &MainWindowStatusWidget::OnWarningButtonPressed, this, &MainWindow::OnShowValidationWarnings);
 
         m_nodePaletteModel.RepopulateModel();
+        m_pyNodePaletteModel.RepopulateModel();
 
         // Order these are created denotes the order for an auto-generate Qt menu. Keeping this construction order
         // in sync with the order we display under tools for consistency.
@@ -569,6 +571,14 @@ namespace ScriptCanvasEditor
 
             RegisterObject(AutomationIds::NodePaletteDockWidget, m_nodePalette);
             RegisterObject(AutomationIds::NodePaletteWidget, m_nodePalette->GetNodePaletteWidget());
+
+            Widget::PythonScriptCanvasNodePaletteConfig pyNodePaletteConfig(m_pyNodePaletteModel, nullptr, isInContextMenu);
+
+            m_pyNodePalette = aznew Widget::PythonNodePaletteDockWidget(tr("Python Node Palette"), this, pyNodePaletteConfig);
+            m_pyNodePalette->setObjectName("PyNodePalette");
+
+            RegisterObject(AZ_CRC_CE("SC_PyNodePaletteDockWidget"), m_pyNodePalette);
+            RegisterObject(AZ_CRC_CE("SC_PyNodePaletteWidget"), m_pyNodePalette->GetNodePaletteWidget());
         }
 
         m_propertyGrid = new Widget::PropertyGrid(this, "Node Inspector");
@@ -2713,6 +2723,14 @@ namespace ScriptCanvasEditor
             m_nodePalette->setFloating(false);
             m_nodePalette->show();
         }
+
+        if (m_pyNodePalette)
+        {
+            addDockWidget(Qt::LeftDockWidgetArea, m_pyNodePalette);
+            m_pyNodePalette->setFloating(false);
+            m_pyNodePalette->show();
+        }
+
 
         if (m_variableDockWidget)
         {

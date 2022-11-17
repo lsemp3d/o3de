@@ -47,6 +47,7 @@
 #include <Editor/Utilities/RecentFiles.h>
 #include <Editor/View/Dialogs/SettingsDialog.h>
 #include <Editor/View/Widgets/NodePalette/NodePaletteModel.h>
+#include <Editor/View/Widgets/EditorScriptingPanel/PythonNodePaletteModel.h>
 #include <AzToolsFramework/API/EditorAssetSystemAPI.h>
 
 #include <Editor/View/Widgets/AssetGraphSceneDataBus.h>
@@ -194,6 +195,7 @@ namespace ScriptCanvasEditor
         class CommandLine;
         class GraphTabBar;
         class NodePaletteDockWidget;
+        class PythonNodePaletteDockWidget;
         class NodeProperties;
         class PropertyGrid;
         class LogPanelWidget;
@@ -672,6 +674,7 @@ namespace ScriptCanvasEditor
         UnitTestDockWidget*                 m_unitTestDockWidget = nullptr;
         StatisticsDialog*                   m_statisticsDialog = nullptr;
         Widget::NodePaletteDockWidget*      m_nodePalette = nullptr;
+        Widget::PythonNodePaletteDockWidget* m_pyNodePalette = nullptr;
         Widget::LogPanelWidget*             m_logPanel = nullptr;
         Widget::PropertyGrid*               m_propertyGrid = nullptr;
         Widget::CommandLine*                m_commandLine = nullptr;
@@ -688,6 +691,7 @@ namespace ScriptCanvasEditor
         MainWindowStatusWidget*             m_statusWidget = nullptr;
 
         NodePaletteModel                    m_nodePaletteModel;
+        PythonNodePaletteModel              m_pyNodePaletteModel;
 
         QStringList                         m_filesToOpen;
 

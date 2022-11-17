@@ -7,27 +7,9 @@
 #
 
 set(FILES
-    Editor/ScriptCanvasEditorGem.cpp
-    Editor/Settings.h
-    Editor/Settings.cpp
-    Editor/ReflectComponent.h
-    Editor/ReflectComponent.cpp
-    Editor/SystemComponent.h
-    Editor/SystemComponent.cpp
-    Editor/QtMetaTypes.h
-    Editor/Assets/ScriptCanvasAssetHelpers.h
-    Editor/Assets/ScriptCanvasAssetHelpers.cpp
-    Editor/Include/ScriptCanvas/Assets/ScriptCanvasFileHandling.h
-    Editor/Assets/ScriptCanvasFileHandling.cpp
-    Editor/Assets/ScriptCanvasUndoHelper.h
-    Editor/Assets/ScriptCanvasUndoHelper.cpp
-    Editor/Components/EditorGraph.cpp
-    Editor/Components/EditorUtils.cpp
-    Editor/Components/EditorGraphVariableManagerComponent.cpp
-    Editor/Components/EditorScriptCanvasComponent.cpp
-    Editor/Components/GraphUpgrade.cpp
-    Editor/Components/IconComponent.h
-    Editor/Components/IconComponent.cpp
+
+
+# API
     Editor/Include/ScriptCanvas/Bus/EditorSceneVariableManagerBus.h
     Editor/Include/ScriptCanvas/Bus/EditorScriptCanvasBus.h
     Editor/Include/ScriptCanvas/Bus/GraphBus.h
@@ -53,6 +35,42 @@ set(FILES
     Editor/Include/ScriptCanvas/GraphCanvas/DynamicSlotBus.h
     Editor/Include/ScriptCanvas/GraphCanvas/NodeDescriptorBus.h
     Editor/Include/ScriptCanvas/GraphCanvas/MappingBus.h
+
+# General
+    Editor/ScriptCanvasEditorGem.cpp
+    Editor/Settings.h
+    Editor/Settings.cpp
+    Editor/ReflectComponent.h
+    Editor/ReflectComponent.cpp
+    Editor/SystemComponent.h
+    Editor/SystemComponent.cpp
+    Editor/QtMetaTypes.h
+
+# Assets
+    Editor/Assets/ScriptCanvasAssetHelpers.h
+    Editor/Assets/ScriptCanvasAssetHelpers.cpp
+    Editor/Include/ScriptCanvas/Assets/ScriptCanvasFileHandling.h
+    Editor/Assets/ScriptCanvasFileHandling.cpp
+    Editor/Assets/ScriptCanvasUndoHelper.h
+    Editor/Assets/ScriptCanvasUndoHelper.cpp
+
+# Components
+    Editor/Components/EditorGraph.cpp
+    Editor/Components/EditorUtils.cpp
+    Editor/Components/EditorGraphVariableManagerComponent.cpp
+    Editor/Components/EditorScriptCanvasComponent.cpp
+    Editor/Components/GraphUpgrade.cpp
+    Editor/Components/IconComponent.h
+    Editor/Components/IconComponent.cpp
+
+
+# Editor Scripting
+    Editor/View/Widgets/EditorScriptingPanel/PythonNodePaletteDockWidget.h
+    Editor/View/Widgets/EditorScriptingPanel/PythonNodePaletteDockWidget.cpp
+    Editor/View/Widgets/EditorScriptingPanel/PythonNodePaletteModel.cpp
+    Editor/View/Widgets/EditorScriptingPanel/PythonNodePaletteModel.h
+
+# Graph Canvas Integration
     Editor/GraphCanvas/AutomationIds.h
     Editor/GraphCanvas/GraphCanvasEditorNotificationBusId.h
     Editor/GraphCanvas/PropertySlotIds.h
@@ -107,10 +125,14 @@ set(FILES
     Editor/GraphCanvas/DataInterfaces/ScriptCanvasQuaternionDataInterface.h
     Editor/GraphCanvas/PropertyInterfaces/ScriptCanvasPropertyDataInterface.h
     Editor/GraphCanvas/PropertyInterfaces/ScriptCanvasStringPropertyDataInterface.h
+
+# Model
     Editor/Model/EntityMimeDataHandler.h
     Editor/Model/EntityMimeDataHandler.cpp
     Editor/Model/UnitTestBrowserFilterModel.h
     Editor/Model/UnitTestBrowserFilterModel.cpp
+
+# Nodes
     Editor/Nodes/NodeCreateUtils.h
     Editor/Nodes/NodeCreateUtils.cpp
     Editor/Nodes/NodeDisplayUtils.h
@@ -135,12 +157,16 @@ set(FILES
     Editor/View/Dialogs/UnsavedChangesDialog.h
     Editor/View/Dialogs/UnsavedChangesDialog.cpp
     Editor/View/Dialogs/UnsavedChangesDialog.ui
+
+# Container Wizard
     Editor/View/Dialogs/ContainerWizard/ContainerTypeLineEdit.h
     Editor/View/Dialogs/ContainerWizard/ContainerTypeLineEdit.cpp
     Editor/View/Dialogs/ContainerWizard/ContainerTypeLineEdit.ui
     Editor/View/Dialogs/ContainerWizard/ContainerWizard.h
     Editor/View/Dialogs/ContainerWizard/ContainerWizard.cpp
     Editor/View/Dialogs/ContainerWizard/ContainerWizard.ui
+
+# Widgets
     Editor/View/Widgets/CanvasWidget.ui
     Editor/View/Widgets/CanvasWidget.h
     Editor/View/Widgets/CanvasWidget.cpp
@@ -167,6 +193,8 @@ set(FILES
     Editor/View/Widgets/SourceHandlePropertyAssetCtrl.cpp
     Editor/View/Widgets/DataTypePalette/DataTypePaletteModel.cpp
     Editor/View/Widgets/DataTypePalette/DataTypePaletteModel.h
+
+# Node Palette
     Editor/View/Widgets/NodePalette/CreateNodeMimeEvent.cpp
     Editor/View/Widgets/NodePalette/CreateNodeMimeEvent.h
     Editor/View/Widgets/NodePalette/FunctionNodePaletteTreeItemTypes.cpp
@@ -184,6 +212,8 @@ set(FILES
     Editor/View/Widgets/NodePalette/SpecializedNodePaletteTreeItemTypes.h
     Editor/View/Widgets/NodePalette/VariableNodePaletteTreeItemTypes.cpp
     Editor/View/Widgets/NodePalette/VariableNodePaletteTreeItemTypes.h
+
+# Logging Panel
     Editor/View/Widgets/LoggingPanel/LoggingDataAggregator.cpp
     Editor/View/Widgets/LoggingPanel/LoggingDataAggregator.h
     Editor/View/Widgets/LoggingPanel/LoggingTypes.h
